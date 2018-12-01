@@ -16,4 +16,8 @@ public class Item {
     public int returnQuantity() {
         return this.quantity;
     }
+
+    public String toString() {
+        return this.name;
+    }
 }
