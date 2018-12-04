@@ -24,13 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         lv = (ListView) findViewById(R.id.categoryListView);
 
-        SharedPreferences prefGet = getSharedPreferences(KEY_USER, Activity.MODE_PRIVATE);
-        items = (Category) prefGet.getStringSet(KEY_USER, null);
-
-        lv.setAdapter(new ArrayAdapter<Item>(
+        lv.setAdapter(new ArrayAdapter<Category>(
                 this,
                 android.R.layout.simple_list_item_1,
-                (List<Item>) items
+                ItemListHub.getInstance().getCategories()
         ));
 
         Log.d(TAG, "Activity created");
@@ -60,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences prefPut = getSharedPreferences(KEY_USER, Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
-        prefEditor.put
         Log.d(TAG, "Activity paused");
     }
 
