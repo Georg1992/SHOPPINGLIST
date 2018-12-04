@@ -1,11 +1,14 @@
 package com.example.georg.shoppinglist;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,11 +19,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_USER = "com.example.ShoppingList";
     private ListView lv;
     private Category items;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        configSwitchButton(); //Temporary switch activity method
+
 
         lv = (ListView) findViewById(R.id.categoryListView);
 
@@ -31,6 +36,19 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         Log.d(TAG, "Activity created");
+    }
+
+
+    public void configSwitchButton() {
+        Button SwitchButton = (Button) findViewById(R.id.itemsbuttonswitch);
+      SwitchButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              startActivity(new Intent(MainActivity.this, ItemListActivity.class));
+          }
+          //Temporary switch activity method
+
+      });
     }
 
     @Override
@@ -71,4 +89,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(TAG, "Activity destroyed");
     }
+
 }
