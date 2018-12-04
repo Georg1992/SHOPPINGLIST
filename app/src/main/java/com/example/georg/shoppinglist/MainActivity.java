@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Show Log";
     private static final String KEY_USER = "com.example.ShoppingList";
     private ListView lv;
-    private ItemAdapter items;
+    private Category items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.mainListView);
 
         SharedPreferences prefGet = getSharedPreferences(KEY_USER, Activity.MODE_PRIVATE);
-        items = (ItemAdapter) prefGet.getStringSet(KEY_USER, null);
+        items = (Category) prefGet.getStringSet(KEY_USER, null);
 
         lv.setAdapter(new ArrayAdapter<Item>(
                 this,

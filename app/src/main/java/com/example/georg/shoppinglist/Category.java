@@ -2,10 +2,10 @@ package com.example.georg.shoppinglist;
 
 import java.util.ArrayList;
 
-public class ItemAdapter {
+public class Category {
     private ArrayList<Item> items;
 
-    public ItemAdapter() {
+    public Category() {
         this.items = new ArrayList<Item>();
     }
 
