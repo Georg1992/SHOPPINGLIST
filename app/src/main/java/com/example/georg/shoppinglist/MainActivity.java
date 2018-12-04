@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lv = (ListView) findViewById(R.id.mainListView);
+        lv = (ListView) findViewById(R.id.categoryListView);
 
         SharedPreferences prefGet = getSharedPreferences(KEY_USER, Activity.MODE_PRIVATE);
         items = (Category) prefGet.getStringSet(KEY_USER, null);
