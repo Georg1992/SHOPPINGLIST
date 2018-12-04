@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Category {
     private ArrayList<Item> items;
+    private String name;
 
-    public Category() {
+    public Category(String name) {
         this.items = new ArrayList<Item>();
+        this.name = name;
     }
 
     public ArrayList<Item> getItems() {
@@ -15,5 +17,9 @@ public class Category {
 
     public Item getItem(int i) {
         return this.items.get(i);
+    }
+
+    public String toString() {
+        return this.name;
     }
 }
