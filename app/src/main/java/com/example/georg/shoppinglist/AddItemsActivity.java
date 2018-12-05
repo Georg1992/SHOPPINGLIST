@@ -23,8 +23,8 @@ public class AddItemsActivity extends AppCompatActivity {
     }
     public  void addToList(View view){
         //Scanner reader = new Scanner(System.in);
-        EditText itemName = (EditText) findViewById(R.id.itemName);
-        EditText amount = (EditText) findViewById(R.id.amount);
+        EditText itemName =  findViewById(R.id.itemName);
+        EditText amount =  findViewById(R.id.amount);
 
         int d = Integer.parseInt(amount.getText().toString());
         ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
