@@ -17,14 +17,14 @@ public class ListGeneratorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_generator);
 
-        ListView lview = (ListView) findViewById(R.id.itemListView);
+        ListView listview =  findViewById(R.id.itemListView);
 
-        lview.setAdapter(new ArrayAdapter<Item>(
+        listview.setAdapter(new ArrayAdapter<Item>(
                 this,
                 android.R.layout.simple_list_item_1,
                 ItemListHub.getInstance().getItems()));
 
-
+        Intent intent = getIntent();
 
     }
 }

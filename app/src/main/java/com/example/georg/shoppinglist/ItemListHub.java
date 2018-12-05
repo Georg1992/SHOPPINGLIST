@@ -21,6 +21,7 @@ public class ItemListHub {
         categories.add(new Category("Other"));
 
         this.items=new ArrayList<Item>();
+        items.add(new Item("pen",3));
 
     }
 
