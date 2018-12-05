@@ -19,12 +19,12 @@ public class AddItemsActivity extends AppCompatActivity {
         int i=b.getInt(MainActivity.KEY_USER,0);
     }
     public  void addToList(View view){
-        Scanner reader = new Scanner(System.in);
+        //Scanner reader = new Scanner(System.in);
         EditText itemName = (EditText) findViewById(R.id.itemName);
         EditText amount = (EditText) findViewById(R.id.amount);
 
-        //int d = Integer.parseInt(reader.nextLine());
-        //ItemListHub.getInstance().getItems().add(new Item(reader.nextLine(), 0));
+        int d = Integer.parseInt(amount.getText().toString());
+        ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
 
     }
 }
