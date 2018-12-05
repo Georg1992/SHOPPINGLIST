@@ -38,7 +38,7 @@ public class ItemListActivity extends ListActivity {
             setListAdapter(adapter);
 
 
-            result = (EditText) findViewById(R.id.editTextDialogUserInput);
+           // result = (EditText) findViewById(R.id.editTextDialogUserInput);
 
 
             Button BackButton = (Button) findViewById(R.id.button2);
@@ -69,14 +69,14 @@ public void onClickAlert(){
         public void onClick(View v) {
 
            LayoutInflater li = LayoutInflater.from(ItemListActivity.this);
-            final View promptsView = li.inflate(R.layout.popup, null);
+            //final View promptsView = li.inflate(R.layout.popup, null);
 
             AlertDialog.Builder a_builder = new AlertDialog.Builder(ItemListActivity.this);
 
 
 
             a_builder.setMessage("Add Item")
-                    .setView(promptsView)
+                    //.setView(promptsView)
 
                     .setCancelable(false)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
