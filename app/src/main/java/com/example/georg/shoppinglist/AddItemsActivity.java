@@ -28,6 +28,8 @@ public class AddItemsActivity extends AppCompatActivity {
 
         int d = Integer.parseInt(amount.getText().toString());
         ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
+        itemName.setText("");
+        amount.setText(null);
 
     }
 
