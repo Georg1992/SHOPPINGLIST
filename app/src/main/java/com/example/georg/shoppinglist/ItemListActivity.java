@@ -12,31 +12,33 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import java.util.ArrayList;
 
 public class ItemListActivity extends ListActivity {
 
-        //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
         ArrayList<String> listItems=new ArrayList<String>();
-
-        //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
         ArrayAdapter<String> adapter;
 
          private static Button AddButton;
 
          private EditText result;
 
+         private ListView ItemList;
+
 
         @Override
-        public void onCreate(Bundle icicle) {
-            super.onCreate(icicle);
+        public void onCreate(Bundle savedInstanceState)
+        {
+            super.onCreate(savedInstanceState);
 
             setContentView(R.layout.activity_item_list);
 
             adapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1, listItems);
-            setListAdapter(adapter);
 
+            ItemList = (ListView) findViewById(android.R.id.list);
+            setListAdapter(adapter);
 
            // result = (EditText) findViewById(R.id.editTextDialogUserInput);
 
@@ -55,13 +57,7 @@ public class ItemListActivity extends ListActivity {
         }
 
 
-
-
-
-
-
-
-public void onClickAlert(){
+        public void onClickAlert(){
 
     AddButton = findViewById(R.id.addBtn);
     AddButton.setOnClickListener(new View.OnClickListener() {
@@ -83,12 +79,13 @@ public void onClickAlert(){
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
+
+
                            addItems();
                            dialog.cancel();
 
 
-                            //final EditText userInput = (EditText) promptsView
-                              //      .findViewById(R.id.editTextDialogUserInput);
+
 
                         }
                     });
@@ -106,9 +103,9 @@ public void onClickAlert(){
 
     public void addItems() {
 
-        //String getInput = result.getText().toString(); //CRASHES WHEN TRYING TO ADD USER INPUT TO THE ARRAYLIST
-        String getInput = "potato";
+        String getInput = result.getText().toString(); //CRASHES WHEN TRYING TO ADD USER INPUT TO THE ARRAYLIST
 
+        //String getInput = "add";
         listItems.add(getInput);
         adapter.notifyDataSetChanged();
 
