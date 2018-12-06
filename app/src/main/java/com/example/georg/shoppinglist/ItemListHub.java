@@ -13,6 +13,7 @@ public class ItemListHub {
 
     public ItemListHub() {
         this.items = new ArrayList<Item>();
+        items.add(new Item("food", 90));
         this.categories = new ArrayList<Category>();
         categories.add(new Category("Food"));
         categories.add(new Category("Cleaning"));
@@ -21,7 +22,7 @@ public class ItemListHub {
         categories.add(new Category("Recipes"));
         categories.add(new Category("Other"));
 
-        items.add(new Item("food", 90));
+
 
 
 

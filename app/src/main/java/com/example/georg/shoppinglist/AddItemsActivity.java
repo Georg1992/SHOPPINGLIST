@@ -21,7 +21,7 @@ public class AddItemsActivity extends AppCompatActivity {
         Bundle b= getIntent().getExtras();
         int i=b.getInt(KEY_USER,0);
     }
-    public  void addToList(View view){
+    public void addToList(View view){
         //Scanner reader = new Scanner(System.in);
         EditText itemName =  findViewById(R.id.itemName);
         EditText amount =  findViewById(R.id.amount);
@@ -34,7 +34,7 @@ public class AddItemsActivity extends AppCompatActivity {
     }
 
     public void previewList(View view){
-        Intent nextActivity = new Intent( AddItemsActivity.this, ListGeneratorActivity.class);
+        Intent nextActivity = new Intent( this, ListGeneratorActivity.class);
         //nextActivity.putExtra(KEY_USER);
         startActivity(nextActivity);
     }
