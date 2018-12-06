@@ -21,11 +21,6 @@ public class ItemListHub {
         categories.add(new Category("Clothes"));
         categories.add(new Category("Recipes"));
         categories.add(new Category("Other"));
-
-
-
-
-
     }
 
     public ArrayList<Category> getCategories() {
@@ -43,6 +38,7 @@ public class ItemListHub {
     public Item getItem(int i) {
         return items.get(i);
     }
+
 
 
 
