@@ -10,6 +10,10 @@ public class Item {
         this.name = name;
         this.amount = amount;
     }
+
+    public Item(String name) {
+        this(name, 0);
+    }
     public String getName(){return this.name;}
     public int getAmount(){return this.amount;}
     public String toString(){return this.name  + " :  " + Integer.toString(this.amount);}

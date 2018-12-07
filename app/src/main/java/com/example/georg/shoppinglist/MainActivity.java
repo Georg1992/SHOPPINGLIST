@@ -15,6 +15,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "Show Log";
@@ -25,6 +27,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences prefGet = this.getSharedPreferences("savedList", Activity.MODE_PRIVATE);
+        Map<String,?> entries = prefGet.getAll();
+        Set<String> keys = entries.keySet();
+        for (String key: keys) {
+            Item item = new Item(prefGet.getString(key, "Nothing stored"));
+            if (key.contains(Integer.toString(0000))) {
+                ItemListHub.getInstance().getCategory(0).addItem(item);
+            } else if (key.contains(Integer.toString(1111))) {
+                ItemListHub.getInstance().getCategory(1).addItem(item);
+            } else if (key.contains(Integer.toString(2222))) {
+                ItemListHub.getInstance().getCategory(2).addItem(item);
+            } else if (key.contains(Integer.toString(3333))) {
+                ItemListHub.getInstance().getCategory(3).addItem(item);
+            } else if (key.contains(Integer.toString(4444))) {
+                ItemListHub.getInstance().getCategory(4).addItem(item);
+            } else if (key.contains(Integer.toString(5555))) {
+                ItemListHub.getInstance().getCategory(5).addItem(item);
+            }
+        }
+
 
         lv = (ListView) findViewById(R.id.categoryListView);
 

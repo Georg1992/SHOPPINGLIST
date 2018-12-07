@@ -13,14 +13,14 @@ public class ItemListHub {
 
     public ItemListHub() {
         this.items = new ArrayList<Item>();
-        items.add(new Item("food", 90));
+        items.add(new Item("food"));
         this.categories = new ArrayList<Category>();
-        categories.add(new Category("F00D"));
-        categories.add(new Category("CLEANING"));
-        categories.add(new Category("PETS"));
-        categories.add(new Category("CLOTHES"));
-        categories.add(new Category("RECIPES"));
-        categories.add(new Category("OTHER"));
+        categories.add(new Category("F00D", 0000));
+        categories.add(new Category("CLEANING", 1111));
+        categories.add(new Category("PETS", 2222));
+        categories.add(new Category("CLOTHES", 3333));
+        categories.add(new Category("RECIPES", 4444));
+        categories.add(new Category("OTHER", 5555));
     }
 
     public ArrayList<Category> getCategories() {
@@ -37,6 +37,10 @@ public class ItemListHub {
 
     public Item getItem(int i) {
         return items.get(i);
+    }
+
+    public void addItemToList(Item item) {
+        this.items.add(item);
     }
 
 

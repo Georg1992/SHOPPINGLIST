@@ -1,6 +1,8 @@
 package com.example.georg.shoppinglist;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.Scanner;
-
 import static com.example.georg.shoppinglist.MainActivity.KEY_USER;
 
 public class AddItemsActivity extends AppCompatActivity {
@@ -37,13 +38,19 @@ public class AddItemsActivity extends AppCompatActivity {
     public void addToList(View view){
         //Scanner reader = new Scanner(System.in);
         EditText itemName =  findViewById(R.id.itemName);
-        EditText amount =  findViewById(R.id.amount);
-
-        int d = Integer.parseInt(amount.getText().toString());
-        ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
-        ItemListHub.getInstance().getCategory(i).addItem(new Item(itemName.getText().toString(),d));
-        ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
-        itemName.setText("");
-        amount.setText(null);
+        String name = itemName.getText().toString();
+        //EditText amount =  findViewById(R.id.amount);
+        if (name.length() > 0) {
+            //int d = Integer.parseInt(amount.getText().toString());
+            Item newItem = new Item(name);
+            //ItemListHub.getInstance().getItems().add(newItem);
+            ItemListHub.getInstance().getCategory(i).addItem(newItem);
+            //amount.setText(null);
+            SharedPreferences prefPut = getSharedPreferences("savedList", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = prefPut.edit();
+            prefEditor.putString(ItemListHub.getInstance().getCategory(i).getCode() + newItem.getName(), newItem.getName());
+            prefEditor.commit();
+            itemName.setText("");
+        }
     }
 }
