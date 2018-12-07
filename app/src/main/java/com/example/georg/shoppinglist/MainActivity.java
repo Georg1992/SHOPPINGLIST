@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        configSwitchButton(); //Temporary switch activity method
-
-
         lv = (ListView) findViewById(R.id.categoryListView);
 
         lv.setAdapter(new ArrayAdapter<Category>(
@@ -53,16 +50,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void configSwitchButton() {
-        Button SwitchButton = (Button) findViewById(R.id.savedLists);
-      SwitchButton.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              startActivity(new Intent(MainActivity.this, Saved_Lists.class));
-          }
-          //Temporary switch activity method
-
-      });
+    public void showListButton(View view) {
+         Intent showList = new Intent(this, ListGeneratorActivity.class);
+         startActivity(showList);
     }
 
 

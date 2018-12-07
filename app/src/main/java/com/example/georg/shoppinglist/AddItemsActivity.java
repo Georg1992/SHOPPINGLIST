@@ -22,6 +22,7 @@ public class AddItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_items);
+
         b = getIntent().getExtras();
         i = b.getInt(MainActivity.KEY_USER,0);
 
@@ -39,14 +40,8 @@ public class AddItemsActivity extends AppCompatActivity {
 
         int d = Integer.parseInt(amount.getText().toString());
         ItemListHub.getInstance().getCategory(i).addItem(new Item(itemName.getText().toString(),d));
+        ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
         itemName.setText("");
         amount.setText(null);
-
-    }
-
-    public void previewList(View view){
-        Intent nextActivity = new Intent( this, ListGeneratorActivity.class);
-        //nextActivity.putExtra(KEY_USER);
-        startActivity(nextActivity);
     }
 }
