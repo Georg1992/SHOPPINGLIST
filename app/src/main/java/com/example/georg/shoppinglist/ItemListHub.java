@@ -15,12 +15,12 @@ public class ItemListHub {
         this.items = new ArrayList<Item>();
         items.add(new Item("food", 90));
         this.categories = new ArrayList<Category>();
-        categories.add(new Category("Food"));
-        categories.add(new Category("Cleaning"));
-        categories.add(new Category("Pets"));
-        categories.add(new Category("Clothes"));
-        categories.add(new Category("Recipes"));
-        categories.add(new Category("Other"));
+        categories.add(new Category("F00D"));
+        categories.add(new Category("CLEANING"));
+        categories.add(new Category("PETS"));
+        categories.add(new Category("CLOTHES"));
+        categories.add(new Category("RECIPES"));
+        categories.add(new Category("OTHER"));
     }
 
     public ArrayList<Category> getCategories() {

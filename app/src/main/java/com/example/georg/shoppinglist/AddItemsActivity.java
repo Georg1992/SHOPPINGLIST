@@ -24,6 +24,7 @@ public class AddItemsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_items);
 
         b = getIntent().getExtras();
+        //int i= b.getInt(KEY_USER,0);
         i = b.getInt(MainActivity.KEY_USER,0);
 
         lv = (ListView) (findViewById(R.id.itemInCategory));
@@ -39,6 +40,7 @@ public class AddItemsActivity extends AppCompatActivity {
         EditText amount =  findViewById(R.id.amount);
 
         int d = Integer.parseInt(amount.getText().toString());
+        ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
         ItemListHub.getInstance().getCategory(i).addItem(new Item(itemName.getText().toString(),d));
         ItemListHub.getInstance().getItems().add(new Item(itemName.getText().toString(),d));
         itemName.setText("");
