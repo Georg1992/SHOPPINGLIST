@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void configSwitchButton() {
-        Button SwitchButton = (Button) findViewById(R.id.itemsbuttonswitch);
+        Button SwitchButton = (Button) findViewById(R.id.savedLists);
       SwitchButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              startActivity(new Intent(MainActivity.this, ItemListActivity.class));
+              startActivity(new Intent(MainActivity.this, Saved_Lists.class));
           }
           //Temporary switch activity method
 
