@@ -34,6 +34,9 @@ public class AddItemsActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1,
                 ItemListHub.getInstance().getCategory(i).getItems()
         ));
+
+        MyCustomAdapter adapter = new MyCustomAdapter(ItemListHub.getInstance().getCategory(i).getItems(), this);
+        lv.setAdapter(adapter);
     }
     public void addToList(View view){
         //Scanner reader = new Scanner(System.in);
