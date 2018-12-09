@@ -16,7 +16,7 @@ public class Item {
     }
     public String getName(){return this.name;}
     public int getAmount(){return this.amount;}
-    public String toString(){return this.name  + " :  " + Integer.toString(this.amount);}
+    public String toString(){return this.name;}
 
 }
 
