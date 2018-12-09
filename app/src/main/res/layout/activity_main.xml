@@ -4,38 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main1"
+    android:background="@drawable/main3"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
 
-    <Button
-        android:id="@+id/saveButton"
-        style="@android:style/Widget.Button.Inset"
-        android:layout_width="107dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="showListButton"
-        android:text="Saved List"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/categoryListView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        tools:layout_editor_absoluteX="384dp" />
 
     <ListView
         android:id="@+id/categoryListView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="289dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+
+    <ImageButton
+        android:id="@+id/saveButton"
+        android:layout_width="168dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="showListButton"
+        app:layout_constraintBottom_toTopOf="@+id/categoryListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29000002"
+        app:srcCompat="@drawable/savebutton" />
+
+
 </android.support.constraint.ConstraintLayout>
