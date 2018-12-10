@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 ItemListHub.getInstance().getCategory(4).addItem(item);
             } else if (key.contains(Integer.toString(5555))) {
                 ItemListHub.getInstance().getCategory(5).addItem(item);
+            } else {
+                ItemListHub.getInstance().getItems().add(item);
             }
         }
 

@@ -25,7 +25,7 @@ public class AddItemsActivity extends AppCompatActivity {
 
         lv = (ListView) (findViewById(R.id.itemInCategory));
 
-        MyCustomAdapter adapter = new MyCustomAdapter(ItemListHub.getInstance().getCategory(i).getItems(), this);
+        MyCustomAdapter adapter = new MyCustomAdapter(ItemListHub.getInstance().getCategory(i), this);
         lv.setAdapter(adapter);
     }
     public void addToCategory(View view){
@@ -36,6 +36,10 @@ public class AddItemsActivity extends AppCompatActivity {
         if (name.length() > 0) {
             Item newItem = new Item(name);
             ItemListHub.getInstance().getCategory(i).addItem(newItem);
+
+            //save the added item into corresponding Category, via sharedPreferences. The key of the item will
+            //be categoryCode + itemName. The value is itemName.
+
             SharedPreferences prefPut = getSharedPreferences("savedList", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
             prefEditor.putString(ItemListHub.getInstance().getCategory(i).getCode() + newItem.getName(), newItem.getName());

@@ -10,28 +10,27 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
 
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
-    private ArrayList<Item> list;
+    private Category category;
     private Context context;
 
 
 
-    public MyCustomAdapter(ArrayList<Item> list, Context context) {
-        this.list = list;
+    public MyCustomAdapter(Category category, Context context) {
+        this.category = category;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return category.getItems().size();
     }
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return category.getItems().get(pos);
     }
 
     @Override
@@ -48,10 +47,9 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.custom_layout, null);
         }
-
         //Handle TextView and display string from your list
         TextView listItemText = (TextView)view.findViewById(R.id.list_item_string);
-        listItemText.setText(list.get(position).getName());
+        listItemText.setText(category.getItems().get(position).getName());
 
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.delete_btn);
@@ -61,20 +59,40 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 //do something
-                list.remove(position); //or some other task
-                notifyDataSetChanged();
+                    category.getItems().remove(position); //or some other task
+                    notifyDataSetChanged();
+                    if (category.getItems().size() > 0) {
+                        SharedPreferences prefRemove = context.getSharedPreferences("savedList", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor prefEditor = prefRemove.edit();
+                        prefEditor.remove(category.getCode() + category.getItems().get(position).getName());
+                        prefEditor.commit();
+                    }
             }
         });
 
         addBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ItemListHub.getInstance().addItemToList(list.get(position));
-                notifyDataSetChanged();
+                    ItemListHub.getInstance().addItemToList(category.getItems().get(position));
+                    notifyDataSetChanged();
+                    SharedPreferences prefPut = context.getSharedPreferences("savedList", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor prefEditor = prefPut.edit();
+                    prefEditor.putString(category.getItems().get(position).getName(), category.getItems().get(position).getName());
+                    prefEditor.commit();
             }
         });
 
         return view;
+    }
+
+    private static SharedPreferences getPrefs(Context context) {
+        return context.getSharedPreferences("savedList", Context.MODE_PRIVATE);
+    }
+
+    public static void deletePrefs(Context context, String key) {
+        SharedPreferences.Editor editor = getPrefs(context).edit();
+        editor.remove(key);
+        editor.commit();
     }
 
 
