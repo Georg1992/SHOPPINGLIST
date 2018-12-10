@@ -1,5 +1,7 @@
 package com.example.georg.shoppinglist;
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Category {
@@ -7,12 +9,14 @@ public class Category {
     private String name;
     private String code;
 
-    public Category(String name, String code) {
-        this.items = new ArrayList<Item>();
+    Category(String name, String code) {
+        this.items = new ArrayList<>();
         this.code = code;
         this.name = name;
     }
 
+    @NonNull
+    @Override
     public String toString() {
         return this.name;
     }
@@ -20,6 +24,8 @@ public class Category {
     public String getCode() {
         return this.code;
     }
+    //While creating several default categories in Global ItemListHub Class, each category will be
+    //a given code-number, which can be used for naming the key in sharedPreferences data saving later
 
     public Item getItem(int i) {
         return this.items.get(i);
@@ -33,11 +39,11 @@ public class Category {
         return this.items.size();
     }
 
-    public ArrayList<Item> getItems() {
+    ArrayList<Item> getItems() {
         return this.items;
     }
 
-    public void addItem(Item item) {
+    void addItem(Item item) {
         this.items.add(item);
     }
 }
