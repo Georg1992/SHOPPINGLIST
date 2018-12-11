@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
     private Category category;
     private Context context;
@@ -49,8 +51,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.delete_btn);
         Button addBtn = (Button)view.findViewById(R.id.add_btn);
-        EditText editAmount = (EditText)view.findViewById(R.id.amount);
-        int amount = Integer.parseInt(editAmount.getText().toString());
+        final EditText editAmount = (EditText)view.findViewById(R.id.editAmount);
 
         deleteBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -71,11 +72,24 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 //add item on the savedItem list
-                    ItemListHub.getInstance().addItemToList(category.getItems().get(i));
+                Item newItem = new Item(category.getItem(i).getName());
+                if (editAmount == null) {
+                } else {
+                    String amount = editAmount.getText().toString();
+                    int amountNumber = Integer.parseInt(amount);
+                    newItem = new Item(category.getItem(i).getName(), amountNumber);
+                    editAmount.setText("");
+                }
+
+                    ItemListHub.getInstance().addItemToList(newItem);
                     notifyDataSetChanged();
+
                     SharedPreferences prefPut = context.getSharedPreferences("savedList", Context.MODE_PRIVATE);
                     SharedPreferences.Editor prefEditor = prefPut.edit();
-                    prefEditor.putString(category.getItem(i).getName(), category.getItem(i).getName());
+                    Gson gson = new Gson();
+                    String json = gson.toJson(newItem);
+                    prefEditor.putString("ShoppingList" + newItem.getName(), json);
+                    //prefEditor.putString(category.getItem(i).getName(), category.getItem(i).getName());
                     prefEditor.commit();
             }
         });

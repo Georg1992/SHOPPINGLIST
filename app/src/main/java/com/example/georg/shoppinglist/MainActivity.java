@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Map<String,?> entries = prefGet.getAll();
         Set<String> keys = entries.keySet();
         for (String key: keys) {
+            if (!key.contains("ShoppingList")) {
             Item item = new Item(prefGet.getString(key, "Nothing stored"));
             if (key.contains(Integer.toString(0000))) {
                 ItemListHub.getInstance().getCategory(0).addItem(item);
@@ -47,7 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 ItemListHub.getInstance().getCategory(4).addItem(item);
             } else if (key.contains(Integer.toString(5555))) {
                 ItemListHub.getInstance().getCategory(5).addItem(item);
+            }
             } else {
+                Gson gson = new Gson();
+                String json = prefGet.getString(key, "");
+                Item item = gson.fromJson(json, Item.class);
                 ItemListHub.getInstance().getItems().add(item);
             }
         }

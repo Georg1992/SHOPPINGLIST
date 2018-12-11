@@ -17,8 +17,8 @@
     <Button
         android:id="@+id/delete_btn"
         style="@android:style/Widget.Button.Inset"
-        android:layout_width="40dp"
-        android:layout_height="34dp"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="11dp"
@@ -28,12 +28,22 @@
     <Button
         android:id="@+id/add_btn"
         style="@android:style/Widget.DeviceDefault.Button.Inset"
-        android:layout_width="47dp"
-        android:layout_height="33dp"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
         android:layout_centerVertical="true"
         android:layout_marginRight="2dp"
         android:layout_toLeftOf="@id/delete_btn"
         android:background="@drawable/button4"
         android:textColor="@android:color/holo_green_dark" />
+
+    <EditText
+        android:id="@+id/editAmount"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/add_btn"
+        android:ems="10"
+        android:hint="1, 2, ..."
+        android:inputType="textPersonName|number" />
 
 </RelativeLayout>
