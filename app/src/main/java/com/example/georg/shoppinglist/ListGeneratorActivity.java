@@ -23,6 +23,7 @@ public class ListGeneratorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_generator);
+        //getSupportActionBar().setTitle("Shopping List");
 
         Intent intent = getIntent();
         ListView listview =  findViewById(R.id.itemListView);
@@ -32,6 +33,7 @@ public class ListGeneratorActivity extends AppCompatActivity {
                 this,
                 android.R.layout.simple_list_item_1,
                 ItemListHub.getInstance().getItems()));
+
 
     }
 
