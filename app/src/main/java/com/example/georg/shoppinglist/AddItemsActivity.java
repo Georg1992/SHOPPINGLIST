@@ -19,6 +19,7 @@ public class AddItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_items);
+        //getSupportActionBar().setTitle("Add Items To List");
 
         b = getIntent().getExtras();
         i = b.getInt(MainActivity.KEY_USER,0);

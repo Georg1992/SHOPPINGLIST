@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //getSupportActionBar().setTitle("List Category");
+
 
         SharedPreferences prefGet = this.getSharedPreferences("savedList", Activity.MODE_PRIVATE);
         Map<String,?> entries = prefGet.getAll();
@@ -68,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent nextActivity = new Intent(MainActivity.this, AddItemsActivity.class);
                 nextActivity.putExtra(KEY_USER, i);
                 startActivity(nextActivity);
+
             }
         });
+
+
 
         //Log.d(TAG, "Activity created");
     }
