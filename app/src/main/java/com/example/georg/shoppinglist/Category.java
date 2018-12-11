@@ -28,11 +28,17 @@ public class Category {
     //a given code-number, which can be used for naming the key in sharedPreferences data saving later
 
     public Item getItem(int i) {
-        return this.items.get(i);
+        if (!this.items.isEmpty()) {
+            return this.items.get(i);
+        } else {
+            return null;
+        }
     }
 
     public void removeItem(int i) {
-        this.items.remove(i);
+        if (!this.items.isEmpty()) {
+            this.items.remove(i);
+        }
     }
 
     public int size() {

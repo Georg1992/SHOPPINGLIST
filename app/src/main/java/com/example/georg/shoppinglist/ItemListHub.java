@@ -35,7 +35,11 @@ public class ItemListHub {
     }
 
     public Item getItem(int i) {
-        return items.get(i);
+        if (!this.items.isEmpty()) {
+            return items.get(i);
+        } else {
+            return null;
+        }
     }
 
     public void addItemToList(Item item) {
