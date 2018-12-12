@@ -17,11 +17,11 @@ public class ItemListHub {
         //Second, the list of saved Items (shopping list)
         this.items = new ArrayList<Item>();
         this.categories = new ArrayList<Category>();
-        categories.add(new Category("F00D", "0000"));
-        categories.add(new Category("CLEANING", "1111"));
-        categories.add(new Category("PETS", "2222"));
-        categories.add(new Category("CLOTHES", "3333"));
-        categories.add(new Category("RECIPES", "4444"));
+        categories.add(new Category("FOOD", "0000"));
+        categories.add(new Category("SNACKS", "1111"));
+        categories.add(new Category("CLOTHES", "2222"));
+        categories.add(new Category("PETS", "3333"));
+        categories.add(new Category("PERSONAL HYGIENE", "4444"));
         categories.add(new Category("OTHER", "5555"));
     }
 
