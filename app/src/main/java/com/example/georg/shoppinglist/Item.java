@@ -12,8 +12,10 @@ public class Item {
     }
 
     Item(String name) {
+        //the default amount of item is 1
         this(name, 1);
     }
+
     public String getName(){return this.name;}
     public int getAmount(){return this.amount;}
     @NonNull

@@ -12,6 +12,9 @@ public class ItemListHub {
     }
 
     public ItemListHub() {
+        //this global class makes sure that it is able to return 2 arrayLists when it is called.
+        //First, the list of Categories.
+        //Second, the list of saved Items (shopping list)
         this.items = new ArrayList<Item>();
         this.categories = new ArrayList<Category>();
         categories.add(new Category("F00D", "0000"));

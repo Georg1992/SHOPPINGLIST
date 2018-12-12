@@ -9,14 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,13 +23,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //getSupportActionBar().setTitle("List Category");
-
 
         SharedPreferences prefGet = this.getSharedPreferences("savedList", Activity.MODE_PRIVATE);
         Map<String,?> entries = prefGet.getAll();
         Set<String> keys = entries.keySet();
         for (String key: keys) {
+            //check every key. Items belonging to a specific category contain that category's code
+            //within its name. By checking key if it contains certain Strings, we can sort items
+            //retrieved from sharedPreferences into proper category, or savedList
             if (!key.contains("ShoppingList")) {
             Item item = new Item(prefGet.getString(key, "Nothing stored"));
             if (key.contains(Integer.toString(0000))) {
@@ -52,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 ItemListHub.getInstance().getCategory(5).addItem(item);
             }
             } else {
+                //here Gson is taken into use.
                 Gson gson = new Gson();
                 String json = prefGet.getString(key, "");
                 Item item = gson.fromJson(json, Item.class);
@@ -59,42 +55,28 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
         lv = (ListView) findViewById(R.id.categoryListView);
-
         lv.setAdapter(new ArrayAdapter<Category>(
                 this,
                 android.R.layout.simple_list_item_1,
                 ItemListHub.getInstance().getCategories()
         ));
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long d) {
-
-
                 Log.d(TAG, "onItemClick(" + i + ")");
                 Intent nextActivity = new Intent(MainActivity.this, AddItemsActivity.class);
                 nextActivity.putExtra(KEY_USER, i);
                 startActivity(nextActivity);
-
             }
         });
-
-
-
-        //Log.d(TAG, "Activity created");
+        Log.d(TAG, "Activity created");
     }
-
 
     public void showListButton(View view) {
          Intent showList = new Intent(this, ListGeneratorActivity.class);
          startActivity(showList);
     }
-
-
-
-
 
     @Override
     protected void onRestart() {
@@ -117,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
-        SharedPreferences prefPut = getSharedPreferences(KEY_USER, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor prefEditor = prefPut.edit();
         Log.d(TAG, "Activity paused");
     }
 

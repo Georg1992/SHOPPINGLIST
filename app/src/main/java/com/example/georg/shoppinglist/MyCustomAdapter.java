@@ -14,6 +14,10 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
+    //this adapter is used to view the listView in AddItemActivity. This class take to use the
+    //custom_layout layout, which includes 2 buttons(add and delete), one textEdit and one listView.
+    //By using this, we can make sure that every item of the listView in AddItemActivity will have
+    //those 2 buttons and one textEdit (where user can enter input).
     private Category category;
     private Context context;
 
@@ -42,14 +46,15 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //this class use the layout of custom_layout by using this syntax.
             view = inflater.inflate(R.layout.custom_layout, null);
         }
         //Handle TextView and display Items from Category
         TextView listItemText = (TextView)view.findViewById(R.id.list_item_string);
-        listItemText.setText(category.getItems().get(i).getName());
+        listItemText.setText(category.getItem(i).getName());
 
         //Handle buttons and add onClickListeners
-        Button deleteBtn = (Button)view.findViewById(R.id.delete_btn);
+        Button deleteBtn = (Button)view.findViewById(R.id.deleteFromList_button);
         Button addBtn = (Button)view.findViewById(R.id.add_btn);
         final EditText editAmount = (EditText)view.findViewById(R.id.editAmount);
 

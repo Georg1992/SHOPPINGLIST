@@ -19,16 +19,16 @@ public class AddItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_items);
-        //getSupportActionBar().setTitle("Add Items To List");
 
         b = getIntent().getExtras();
         i = b.getInt(MainActivity.KEY_USER,0);
-
         lv = (ListView) (findViewById(R.id.itemInCategory));
 
+        //take into use of the customized-adapter from MyCustomAdapter class
         MyCustomAdapter adapter = new MyCustomAdapter(ItemListHub.getInstance().getCategory(i), this);
         lv.setAdapter(adapter);
     }
+
     public void addToCategory(View view){
        //add Item to Category
 
