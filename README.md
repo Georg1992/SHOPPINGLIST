@@ -27,4 +27,6 @@ subcategory to add items.
 In ‘favourite recipe’ one can add a recipe or use existing recipe.
 When one is done adding items or removing items, ‘Shopping List’ generates a grocery list for you
 on another screen.
-Have fun shopping
+Have fun shopping!
+
+Installer Download link http://users.metropolia.fi/~thangt/ShoppingList.apk
